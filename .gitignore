@@ -1,0 +1,9 @@
+auto-save-list/
+auto-save/
+my-local-packages.el
+elpa/
+network-security.data
+projectile-bookmarks.eld
+projectile.cache
+themes/
+backup/
