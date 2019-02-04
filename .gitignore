@@ -7,3 +7,5 @@ projectile-bookmarks.eld
 projectile.cache
 themes/
 backup/
+custom.el
+transient/
