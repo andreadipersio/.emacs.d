@@ -63,10 +63,15 @@
 ;;
 ;; Theme
 ;;
-(use-package doom-themes
+;; (use-package doom-themes
+;;   :ensure t
+;;   :init
+;;   (load-theme 'doom-city-lights t))
+
+(use-package modus-themes
   :ensure t
   :init
-  (load-theme 'doom-city-lights t))
+  (load-theme 'modus-vivendi t))
 
 ;;
 ;; ivy
@@ -277,6 +282,8 @@
 	 (enh-ruby-mode . lsp)
          (php-mode . lsp)
          (lsp-mode . lsp-enable-which-key-integration))
+  :config
+  (setq lsp-file-watch-threshold 100000)
   :commands lsp)
 
 (use-package lsp-ivy
@@ -288,3 +295,11 @@
 ;;
 
 (setq flymake-fringe-indicator-position nil)
+
+;;
+;; JS2 Mode
+;;
+(use-package js2-mode
+  :ensure t
+  :init
+  (setq-default js2-indent-level 2))
