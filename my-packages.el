@@ -13,7 +13,7 @@
 (setq package-archive-priorities
       '(("melpa" .  3)
         ("org" . 2)
-        ("gnu" . 1)))
+        ("gnu" . 2)))
 
 ;; Initialise the packages, avoiding a re-initialisation.
 (unless (bound-and-true-p package--initialized)
@@ -184,6 +184,11 @@
   (setq flycheck-indication-mode nil))
 
 ;;
+;; Configure flymake
+;;
+(setq flymake-fringe-indicator-position nil)
+
+;;
 ;; GraphQL
 ;;
 (use-package graphql-mode
@@ -217,11 +222,10 @@
   (setq dumb-jump-selector 'ivy))
 
 ;;
-;; YAML Mode
+;; YAML 
 ;;
-(use-package yaml-mode
-  :ensure t
-  :mode "\\.y?ml\\'")
+(use-package yaml
+  :ensure t)
 
 ;;
 ;; Visualize regexp matches on current buffer
@@ -257,31 +261,14 @@
   :ensure t)
 
 ;;
-;;
-;;
-(use-package itail
-  :ensure t)
-
-;;
-;; Quelpa
-;;
-(use-package quelpa
-  :ensure t)
-
-(use-package quelpa-use-package
-  :ensure t
-  :init (setq quelpa-checkout-melpa-p nil))
-
-;;
 ;; Language Server Protocol
 ;;
 (use-package lsp-mode
   :ensure t
   :hook (
 	 (ruby-mode . lsp)
-	 (enh-ruby-mode . lsp)
-         (php-mode . lsp)
-         (lsp-mode . lsp-enable-which-key-integration))
+     (enh-ruby-mode . lsp)
+     (lsp-mode . lsp-enable-which-key-integration))
   :config
   (setq lsp-file-watch-threshold 100000)
   :commands lsp)
@@ -289,12 +276,6 @@
 (use-package lsp-ivy
   :ensure t
   :commands lsp-ivy-workspace-symbol)
-
-;;
-;; Configure flymake
-;;
-
-(setq flymake-fringe-indicator-position nil)
 
 ;;
 ;; JS2 Mode
