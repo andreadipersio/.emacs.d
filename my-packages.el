@@ -61,6 +61,12 @@
   :ensure t)
 
 ;;
+;; Ripgrep
+;;
+(use-package rg
+  :ensure t)
+
+;;
 ;; Theme
 ;;
 ;; (use-package doom-themes
@@ -184,7 +190,7 @@
   (setq flycheck-indication-mode nil))
 
 ;;
-;; Configure flymake
+;; Flymake
 ;;
 (setq flymake-fringe-indicator-position nil)
 
@@ -200,7 +206,7 @@
 (use-package ace-window
   :ensure t
   :init
-  (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+  (setq aw-keys '(?a ?s ?d ?f ?x ?c ?v ?b ?q))
   :bind (("C-x o" . ace-window))
   :config
   (set-face-attribute
@@ -222,7 +228,7 @@
   (setq dumb-jump-selector 'ivy))
 
 ;;
-;; YAML 
+;; YAML
 ;;
 (use-package yaml
   :ensure t)
@@ -251,6 +257,7 @@
   :commands (markdown-mode gfm-mode)
   :mode (("README\\.md\\'" . gfm-mode)
          ("\\.md\\'" . markdown-mode)
+         ("\\.mdx\\'" . markdown-mode)	 
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "markdown"))
 
@@ -266,12 +273,13 @@
 (use-package lsp-mode
   :ensure t
   :hook (
-	 (ruby-mode . lsp)
-     (enh-ruby-mode . lsp)
+;;     (ruby-mode . lsp)
+;;     (enh-ruby-mode . lsp)
      (lsp-mode . lsp-enable-which-key-integration))
   :config
   (setq lsp-file-watch-threshold 100000)
-  :commands lsp)
+  (setq lsp-prefer-flymake nil)
+  :commands (lsp lsp-deferred))
 
 (use-package lsp-ivy
   :ensure t
@@ -284,3 +292,32 @@
   :ensure t
   :init
   (setq-default js2-indent-level 2))
+
+;;
+;; Enable line wrap in org mode
+;;
+(add-hook 'org-mode-hook #'(lambda ()
+                             (visual-line-mode)
+                             (org-indent-mode)))
+
+;; Enable richer annotations using the Marginalia package
+(use-package marginalia
+  :ensure t
+  ;; Either bind `marginalia-cycle` globally or only in the minibuffer
+  :bind (("M-A" . marginalia-cycle)
+         :map minibuffer-local-map
+         ("M-A" . marginalia-cycle))
+
+  ;; The :init configuration is always executed (Not lazy!)
+  :init
+
+  ;; Must be in the :init section of use-package such that the mode gets
+  ;; enabled right away. Note that this forces loading the package.
+  (marginalia-mode))
+
+;;
+;; V-Term
+;;
+(when (not (eq system-type 'windows-nt))
+    (use-package vterm
+      :ensure t))
