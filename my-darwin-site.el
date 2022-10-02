@@ -1,6 +1,6 @@
 (cond ((= (x-display-pixel-height) 1440)
        (add-to-list 'default-frame-alist
-		    '(font . "Victor Mono-18")))
+		    '(font . "VictorMono Nerd Font-16")))
       (t
        (add-to-list 'default-frame-alist
-		    '(font . "Victor Mono-16"))))
+		    '(font . "VictorMono Nerd Font-12"))))
