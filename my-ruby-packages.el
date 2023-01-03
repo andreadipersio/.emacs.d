@@ -13,6 +13,7 @@
   :mode "Gemfile\\'"
   :mode "Berksfile\\'"
   :mode "Vagrantfile\\'"
+  :mode "\\.erb\\'"
 
   :interpreter "ruby"
 

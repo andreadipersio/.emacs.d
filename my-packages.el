@@ -225,6 +225,7 @@
   :ensure t
   :init
   (dumb-jump-mode)
+  (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)  
   (setq dumb-jump-selector 'ivy))
 
 ;;
@@ -270,17 +271,21 @@
 ;;
 ;; Language Server Protocol
 ;;
-(use-package lsp-mode
-  :ensure t
-  :hook (
-;;     (ruby-mode . lsp)
-;;     (enh-ruby-mode . lsp)
-     (lsp-mode . lsp-enable-which-key-integration))
-  :config
-  (setq lsp-file-watch-threshold 100000)
-  (setq lsp-prefer-flymake nil)
-  :commands (lsp lsp-deferred))
+(use-package eglot
+  :ensure t)
 
+(use-package lsp-ui
+  :ensure
+  :commands lsp-ui-mode
+  :custom
+  (lsp-ui-peek-always-show nil)
+  (lsp-ui-sideline-show-hover nil)
+  (lsp-ui-doc-enable nil)
+  (lsp-headerline-breadcrumb-enable nil))
+
+;;
+;; Ivy
+;;
 (use-package lsp-ivy
   :ensure t
   :commands lsp-ivy-workspace-symbol)
