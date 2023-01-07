@@ -1,14 +1,16 @@
 (require 'package)
 
+(setq package-native-compile t)
+
 ;;
 ;; Package Archives
 ;;
 (add-to-list 'package-archives
-	     '("melpa" . "http://melpa.org/packages/") t)
+	     '("melpa" . "https://melpa.org/packages/") t)
 (add-to-list 'package-archives
-	     '("org" . "http://orgmode.org/elpa/") t)
+	     '("org" . "https://orgmode.org/elpa/") t)
 (add-to-list 'package-archives
-	     '("gnu" . "http://elpa.gnu.org/packages/") t)
+	     '("gnu" . "https://elpa.gnu.org/packages/") t)
 
 (setq package-archive-priorities
       '(("melpa" .  3)
@@ -326,3 +328,10 @@
 (when (not (eq system-type 'windows-nt))
     (use-package vterm
       :ensure t))
+
+;;
+;; Evil - Vi Layer
+;;
+(use-package evil
+  :ensure t
+  :config (evil-mode 1))
