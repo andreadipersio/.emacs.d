@@ -76,10 +76,15 @@
 ;;   :init
 ;;   (load-theme 'doom-city-lights t))
 
-(use-package modus-themes
+;; (use-package modus-themes
+;;   :ensure t
+;;   :init
+;;   (load-theme 'modus-vivendi t))
+
+(use-package ef-themes
   :ensure t
   :init
-  (load-theme 'modus-vivendi t))
+  (load-theme 'ef-deuteranopia-dark t))
 
 ;;
 ;; ivy
@@ -227,7 +232,7 @@
   :ensure t
   :init
   (dumb-jump-mode)
-  (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)  
+  (add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
   (setq dumb-jump-selector 'ivy))
 
 ;;
@@ -260,7 +265,7 @@
   :commands (markdown-mode gfm-mode)
   :mode (("README\\.md\\'" . gfm-mode)
          ("\\.md\\'" . markdown-mode)
-         ("\\.mdx\\'" . markdown-mode)	 
+         ("\\.mdx\\'" . markdown-mode)
          ("\\.markdown\\'" . markdown-mode))
   :init (setq markdown-command "markdown"))
 

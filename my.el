@@ -10,5 +10,3 @@
 (show-paren-mode 1)
 
 (blink-cursor-mode 0)
-
-

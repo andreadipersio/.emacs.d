@@ -1,8 +1,8 @@
 (use-package sly
   :ensure t
   :init
-  (setq inferior-lisp-program "/usr/bin/sbcl"))
-
+  (unless (boundp 'inferior-lisp-program)
+    (setq inferior-lisp-program "/usr/bin/sbcl")))
 
 (use-package sly-quicklisp
   :ensure t)

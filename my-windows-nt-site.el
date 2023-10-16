@@ -1,3 +1,5 @@
+(set-frame-position (selected-frame) 0 0)
+
 (add-to-list 'default-frame-alist
 	     '(font . "Consolas-14"))
 
@@ -7,7 +9,7 @@
 (add-to-list 'default-frame-alist
 	     '(height . 60))
 
-(setq powershell-path (format "%s\\.dotnet\\tools\\pwsh.exe" (getenv "USERPROFILE")))
+(setq powershell-path "pwsh.exe")
 
 (setq explicit-shell-file-name powershell-path)
 (setq shell-file-name powershell-path)
