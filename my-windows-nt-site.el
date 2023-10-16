@@ -10,6 +10,7 @@
 	     '(height . 60))
 
 (setq powershell-path "pwsh.exe")
+(setq inferior-lisp-program "sbcl.exe")
 
 (setq explicit-shell-file-name powershell-path)
 (setq shell-file-name powershell-path)
